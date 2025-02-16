@@ -1,37 +1,21 @@
-#include "role_selection_menu.h"
-#include "../file_list.h"
-#include "../helpers/logger.h"
-#include "../users.h"
-#include <stdio.h>
+#include "./menu.h"
+#include "./menu_handlers_list.h"
 
-#define LINE_MAX 256
-
-void role_selection_display() {
-  FILE *sel_menu_file = fopen(FILE_SELECTION_PAGE, "r");
-  if (!sel_menu_file) {
-    error("UserSelection", "File opening failed!");
-  }
-
-  char line[LINE_MAX] = {'\0'};
-
-  while (fgets(line, LINE_MAX, sel_menu_file)) {
-    printf("%s", line);
-  };
-}
+void role_selection_display() { display_file_content(FILE_SELECTION_PAGE); }
 
 void role_selection_action_handler(int action) {
   switch (action) {
   case Guest:
-    /*display_guest_menu();*/
+    change_current_menu(guest_view);
     break;
   case Customer:
-    puts("Welcome Customer!");
+    change_current_menu(customer_view);
     break;
   case Staff:
-    puts("Welcome Staff!");
+    change_current_menu(staff_view);
     break;
   case Admin:
-    puts("Welcome Admin!");
+    change_current_menu(admin_view);
     break;
   case None:
     puts("Exiting!");

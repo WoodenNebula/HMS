@@ -1,0 +1,8 @@
+---- Welcome Name-(Admin) ----
+1. Register new user
+2. Manage existing users
+3. Manage hotel rooms
+--------
+4. Logout
+
+Select next action (1-4): 

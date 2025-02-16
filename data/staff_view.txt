@@ -1,0 +1,8 @@
+---- Welcome Name-(Staff) ----
+1. Manage Reservations
+2. Check In/Out guests
+3. View hotel room status
+--------
+4. Logout
+
+Select next action (1-4): 
