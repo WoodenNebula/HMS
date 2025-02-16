@@ -1,6 +1,8 @@
-#include <stdio.h>
+#include "./menus/menu.h"
 
-int main(int argc, char *argv[]) {
-  printf("Hello Hotel!");
+int main(int arge, char *argv[]) {
+  menu_init();
+  refresh_menu();
+
   return 0;
 }

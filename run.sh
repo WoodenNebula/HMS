@@ -23,13 +23,12 @@ Run ()
     echo "--------"
   else
     clear
+    echo
     echo "==== Running ===="
     echo
     $exedir
     echo
-    echo
     echo "========"
-    echo
   fi
 }
 

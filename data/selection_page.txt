@@ -1,0 +1,9 @@
+---- Role Selection Menu ----
+1. Admin
+2. Hotel Staff
+3. Customer
+4. Guest
+--------
+5. Exit
+
+Select your designation (1-4) or exit(5): 

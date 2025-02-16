@@ -7,8 +7,8 @@ kind("ConsoleApp")
 language("C")
 targetdir("bin")
 files({
-	"./src/*.h",
-	"./src/*.c",
+	"./src/**.h",
+	"./src/**.c",
 })
 
 filter("configurations:Debug")

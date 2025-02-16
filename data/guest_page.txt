@@ -1,0 +1,7 @@
+---- Welcome Guest ----
+1. Browse Rooms
+--------
+2. Back to role selection
+
+Select next action (1-2): 
+
