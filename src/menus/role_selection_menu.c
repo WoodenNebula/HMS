@@ -1,27 +1,29 @@
 #include "./menu.h"
 #include "./menu_handlers_list.h"
+#include "login_page.h"
+#include <stdlib.h>
 
 void role_selection_display() { display_file_content(FILE_SELECTION_PAGE); }
 
-void role_selection_action_handler(int action) {
-  switch (action) {
+void role_selection_action_handler(int user_role) {
+  char role_name[128];
+  switch (user_role) {
   case Guest:
     change_current_menu(guest_view);
     break;
   case Customer:
-    change_current_menu(customer_view);
-    break;
   case Staff:
-    change_current_menu(staff_view);
-    break;
   case Admin:
-    change_current_menu(admin_view);
+    set_logging_user_type(user_role);
+    login_display();
     break;
   case None:
     puts("Exiting!");
+    exit(EXIT_SUCCESS);
     break;
   default:
     warn("UserSelection", "Bad User Type");
+    abort();
     break;
   }
 }

@@ -24,6 +24,8 @@ void change_current_menu(enum E_menu_type new_menu_type) {
   refresh_menu();
 }
 
+void clear_menu() { system("clear"); }
+
 Menu *get_current_menu() {
   if (g_current_menu == NULL || g_current_menu->display_handler == NULL) {
     error("MenuRetrival", "Empty current menu");

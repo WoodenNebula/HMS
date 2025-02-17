@@ -3,23 +3,23 @@
 #include "../helpers/logger.h"
 #include "../users.h"
 #include <stdio.h>
+
+#include "./login_page.h"
+
 #define LINE_MAX 256
 
 void role_selection_display();
 void role_selection_action_handler(int action);
 
 /// admin related menus
-/*void admin_login_display();*/
-/*void admin_login_action_handler(int action);*/
-
 void admin_view_display();
 void admin_view_action_handler(int action);
 
-/*void admin_user_register_display();*/
-/*void admin_user_register_handler(int action);*/
-/**/
-/*void admin_manage_user_display();*/
-/*void admin_manage_user_action_handler(int action);*/
+void admin_user_register_display();
+void admin_user_register_handler(int action);
+
+void admin_manage_user_display();
+void admin_manage_user_action_handler(int action);
 /// admin related menus
 
 /// staff related menus

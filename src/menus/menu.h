@@ -23,6 +23,8 @@ void change_current_menu(enum E_menu_type new_menu_type);
 
 void display_file_content(const char *path);
 
+void clear_menu();
+
 // internal implementations
 Menu *get_current_menu();
 Menu *get_menu(enum E_menu_type type);
