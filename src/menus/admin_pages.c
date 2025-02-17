@@ -10,15 +10,70 @@ void handle_register_user() {
   register_user_data(&data);
 }
 
+enum E_manage_user_fields { f_name = 1, l_name, role, usr_name, pwd };
 void handle_manage_user() {
   clear_menu();
+  print_all_user_data();
+
   char user_name[32];
   printf("Enter user_name to change detail for: ");
   scanf("%s", user_name);
   S_user_data data = get_user_details(user_name);
 
-  if (data.role != -1) {
-    print_user_data(&data);
+  // no data for the given user
+  if (data.role == -1) {
+    return;
+  }
+
+  clear_menu();
+  puts("Chose which field to manage for the data:\n");
+  print_user_data(&data);
+  int action = input_action();
+  S_user_data new_data = data;
+
+  switch (action) {
+  case f_name:
+    printf("Enter new first name: ");
+    scanf("%s", new_data.first_name);
+    break;
+
+  case l_name:
+    printf("Enter new last name: ");
+    scanf("%s", new_data.last_name);
+    break;
+
+  case role:
+    printf("Select new user role\n");
+    puts("1. Admin");
+    puts("2. Staff");
+    puts("3. Customer");
+    int role = 3;
+    scanf("%d", &role);
+
+    if (role == Admin || role == Staff || role == Customer) {
+      new_data.role = role;
+    } else {
+      warn("UsrRegister", "Invalid Role, defaulting to customer");
+      new_data.role = Customer;
+    }
+    break;
+
+  case usr_name:
+    printf("Enter new username: ");
+    scanf("%s", new_data.creds.user_name);
+    break;
+
+  case pwd:
+    printf("Enter new password: ");
+    scanf("%s", new_data.creds.password);
+    break;
+  }
+
+  bool success = modify_user_data(&new_data, data.creds.user_name);
+  if (success) {
+    notify("UserDataModification", "Success");
+  } else {
+    notify("UserDataModification", "Failed");
   }
 }
 
@@ -32,12 +87,15 @@ void admin_view_action_handler(int choice) {
   switch (choice) {
   case register_user:
     handle_register_user();
+    refresh_menu();
     break;
   case manage_user:
     handle_manage_user();
+    refresh_menu();
     break;
   case manage_room:
     handle_manage_room();
+    refresh_menu();
     break;
   default:
     change_current_menu(selection);

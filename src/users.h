@@ -1,4 +1,5 @@
 #pragma once
+#include <stdbool.h>
 
 enum E_user_role { Admin = 1, Staff, Customer, Guest, None };
 
@@ -17,5 +18,8 @@ typedef struct {
 S_user_data prompt_user_details();
 S_user_data get_user_details(const char *username);
 void print_user_data(const S_user_data *data);
+void print_all_user_data();
+/// modify user data with old user name as user_name
+bool modify_user_data(const S_user_data *new_data, const char *user_name);
 
 void register_user_data(const S_user_data *data);
