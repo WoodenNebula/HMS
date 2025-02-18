@@ -1,6 +1,7 @@
 #pragma once
 #include "../file_list.h"
 #include "../helpers/logger.h"
+#include "../rooms.h"
 #include "../users.h"
 #include <stdio.h>
 

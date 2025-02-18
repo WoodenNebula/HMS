@@ -1,7 +1,13 @@
 #include "./menu.h"
 #include "menu_handlers_list.h"
 
-enum E_admin_menu_choices { register_user = 1, manage_user, manage_room };
+// the order should strictly match as what occurs in the file
+enum E_admin_menu_choices {
+  register_user = 1,
+  manage_user,
+  register_room,
+  manage_room
+};
 
 void handle_register_user() {
   clear_menu();
@@ -77,6 +83,12 @@ void handle_manage_user() {
   }
 }
 
+void handle_register_room() {
+  clear_menu();
+  S_room_data data = prompt_room_details();
+  register_room_data(&data);
+}
+
 void handle_manage_room() {
   clear_menu();
   printf("Manage room");
@@ -91,6 +103,10 @@ void admin_view_action_handler(int choice) {
     break;
   case manage_user:
     handle_manage_user();
+    refresh_menu();
+    break;
+  case register_room:
+    handle_register_room();
     refresh_menu();
     break;
   case manage_room:

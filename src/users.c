@@ -4,6 +4,27 @@
 #include <stdio.h>
 #include <string.h>
 
+void get_user_role_name(char *o_buff, enum E_user_role role) {
+  switch (role) {
+  case Admin:
+    strcpy(o_buff, "Admin");
+    break;
+  case Staff:
+    strcpy(o_buff, "Staff");
+    break;
+  case Customer:
+    strcpy(o_buff, "Customer");
+    break;
+  case Guest:
+    strcpy(o_buff, "Guest");
+    break;
+  case None:
+  default:
+    o_buff = NULL;
+    break;
+  }
+}
+
 S_user_data prompt_user_details() {
   S_user_data data = {0};
 
@@ -101,21 +122,9 @@ void print_user_data(const S_user_data *data) {
 
   printf("1. First name: %s\n", data->first_name);
   printf("2. Last name: %s\n", data->last_name);
-
-  switch (data->role) {
-  case Admin:
-    puts("3. Role: Admin");
-    break;
-  case Staff:
-    puts("3. Role: Staff");
-    break;
-  case Customer:
-    puts("3. Role: Customer");
-    break;
-  default:
-    break;
-  }
-
+  char role_name[32];
+  get_user_role_name(role_name, data->role);
+  printf("3. Role: %s\n", role_name);
   printf("4. Username: %s\n", data->creds.user_name);
   printf("5. Password: %s\n", data->creds.password);
 }
