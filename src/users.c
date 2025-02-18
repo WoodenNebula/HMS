@@ -3,6 +3,7 @@
 #include "helpers/logger.h"
 #include <stdio.h>
 #include <string.h>
+#define LINE_MAX 256
 
 void get_user_role_name(char *o_buff, enum E_user_role role) {
   switch (role) {
@@ -22,6 +23,85 @@ void get_user_role_name(char *o_buff, enum E_user_role role) {
   default:
     o_buff = NULL;
     break;
+  }
+}
+
+void get_user_field_name(char *o_buff, enum E_user_fields field) {
+  switch (field) {
+  case f_name:
+    strcpy(o_buff, "First Name");
+    break;
+  case l_name:
+    strcpy(o_buff, "Last Name");
+    break;
+  case role:
+    strcpy(o_buff, "Role");
+    break;
+  case usr_name:
+    strcpy(o_buff, "UserName");
+    break;
+  case pwd:
+    strcpy(o_buff, "Pwd");
+    break;
+  default:
+    o_buff = NULL;
+    break;
+  }
+}
+
+void user_data_print_all_fields() {
+  char field_name[LINE_MAX];
+  for (int i = f_name; i <= pwd; i++) {
+    get_user_field_name(field_name, i);
+    printf("%d. %s \t ", i, field_name);
+  }
+  puts("");
+}
+
+void user_data_modify_field(S_user_data *data_to_modify,
+                            enum E_user_fields field) {
+
+  if (data_to_modify == NULL) {
+    error("UserDataModify", "NULL DATA PASSED");
+  }
+  switch (field) {
+  case f_name:
+    printf("Enter new first name: ");
+    scanf("%s", data_to_modify->first_name);
+    break;
+
+  case l_name:
+    printf("Enter new last name: ");
+    scanf("%s", data_to_modify->last_name);
+    break;
+
+  case role:
+    printf("Select new user role\n");
+    puts("1. Admin");
+    puts("2. Staff");
+    puts("3. Customer");
+    int role = 3;
+    scanf("%d", &role);
+
+    if (role == Admin || role == Staff || role == Customer) {
+      data_to_modify->role = role;
+    } else {
+      warn("UsrRegister", "Invalid Role, defaulting to customer");
+      data_to_modify->role = Customer;
+    }
+    break;
+
+  case usr_name:
+    printf("Enter new username: ");
+    scanf("%s", data_to_modify->creds.user_name);
+    break;
+
+  case pwd:
+    printf("Enter new password: ");
+    scanf("%s", data_to_modify->creds.password);
+    break;
+  default:
+    error("UserDataModify", "BAD FIELD SELECTION");
   }
 }
 
@@ -95,7 +175,7 @@ bool modify_user_data(const S_user_data *new_data, const char *user_name) {
   return success;
 }
 
-S_user_data get_user_details(const char *username) {
+S_user_data get_user_data(const char *username) {
   FILE *data_file = fopen(FILE_DATA_USERS, "r");
   if (!data_file) {
     error("UserDataRetrieval", "File opening failed!");
@@ -120,13 +200,13 @@ void print_user_data(const S_user_data *data) {
     error("UsrRegister", "NULL DATA SENT");
   }
 
-  printf("1. First name: %s\n", data->first_name);
-  printf("2. Last name: %s\n", data->last_name);
   char role_name[32];
   get_user_role_name(role_name, data->role);
-  printf("3. Role: %s\n", role_name);
-  printf("4. Username: %s\n", data->creds.user_name);
-  printf("5. Password: %s\n", data->creds.password);
+  printf("First name: %s \t ", data->first_name);
+  printf("Last name: %s \t ", data->last_name);
+  printf("Role: %s \t ", role_name);
+  printf("Username: %s \t ", data->creds.user_name);
+  printf("Password: %s \n ", data->creds.password);
 }
 
 void print_all_user_data() {

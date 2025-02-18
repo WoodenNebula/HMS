@@ -2,8 +2,8 @@
 1. Register new user
 2. Manage existing users
 3. Register new room
-5. Manage hotel rooms
+4. Manage hotel rooms
 --------
-6. Logout
+5. Logout
 
-Select next action (1-4): 
+Select next action (1-5): 

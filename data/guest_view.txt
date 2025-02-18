@@ -1,7 +1,8 @@
 ---- Welcome Guest ----
-1. Browse Rooms
+1. Browse all Rooms
+2. View Available Rooms
 --------
-2. Back to role selection
+3. Back to role selection
 
-Select next action (1-2): 
+Select next action (1-3): 
 
