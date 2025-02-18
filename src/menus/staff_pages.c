@@ -99,8 +99,8 @@ void handle_view_booking_history() {
 enum E_staff_choices {
   book = 1,
   unbook,
-  check_in,
-  check_out,
+  /*check_in,*/
+  /*check_out,*/
   view_rooms,
   view_booking_history
 };
