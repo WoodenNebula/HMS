@@ -1,4 +1,4 @@
----- Welcome Guest ----
+---- Welcome (Guest) ----
 1. Browse all Rooms
 2. View Available Rooms
 --------

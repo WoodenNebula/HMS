@@ -17,6 +17,9 @@ typedef struct {
   S_user_creds creds;
 } S_user_data;
 
+void get_logged_in_user(char *o_user_name);
+void set_logged_in_user(const char *user_name);
+
 void get_user_field_name(char *o_buff, enum E_user_fields field);
 void get_user_role_name(char *o_buff, enum E_user_role role);
 void user_data_print_all_fields();

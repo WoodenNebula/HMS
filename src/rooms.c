@@ -226,6 +226,53 @@ bool reserve_room(int room_num, const char *reserver_usrname) {
 
   return true;
 }
+bool unreserve_room(int room_num, const char *unreserver_usrname) {
+  S_room_data room = get_room_data(room_num);
+
+  if (room.num == -1) {
+    notify("RoomUnreservation", "Room doesnt exist!");
+    return false;
+  }
+  if (room.is_available) {
+    notify("RoomUnreservation", "Room is unreserved!");
+    return false;
+  }
+  if (strcmp(room.booked_by, unreserver_usrname) != 0) {
+    notify("RoomUnreservation", "Room is reserved by someone else!");
+    return false;
+  }
+
+  room.is_available = true;
+  strncpy(room.booked_by, "None", LINE_MAX);
+
+  modify_room_data(&room, room.num);
+  update_booking_history(room.num, false, unreserver_usrname);
+
+  return true;
+}
+
+S_room_data find_room_booked_by(const char *usr_name) {
+  FILE *data_file = fopen(FILE_DATA_ROOMS, "r");
+  if (!data_file) {
+    error("RoomDataRetrieval", "File opening failed!");
+  }
+
+  S_room_data data;
+  while (fread(&data, sizeof(S_room_data), 1, data_file)) {
+    // skip unbooked rooms
+    if (data.is_available) {
+      continue;
+    }
+
+    if (strcmp(data.booked_by, usr_name) == 0) {
+      fclose(data_file);
+      return data;
+    }
+  }
+  fclose(data_file);
+  data.num = -1;
+  return data;
+}
 
 void update_booking_history(int room_num, bool isBooked,
                             const char *booked_by) {

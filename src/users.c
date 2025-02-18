@@ -5,6 +5,16 @@
 #include <string.h>
 #define LINE_MAX 256
 
+char g_logged_in_user[LINE_MAX];
+
+void get_logged_in_user(char *o_user_name) {
+  strncpy(o_user_name, g_logged_in_user, LINE_MAX);
+}
+
+void set_logged_in_user(const char *user_name) {
+  strncpy(g_logged_in_user, user_name, LINE_MAX);
+}
+
 void get_user_role_name(char *o_buff, enum E_user_role role) {
   switch (role) {
   case Admin:

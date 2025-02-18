@@ -30,6 +30,7 @@ bool validate_user_creds(enum E_user_role user_role, S_user_creds creds) {
       // username matched, check password
       if (strcmp(data.creds.password, creds.password) == 0) {
         notify("CredsValidation", "Validation success!");
+        set_logged_in_user(data.creds.user_name);
         return true;
       }
       // password didnt match so stop looping and return
@@ -44,6 +45,7 @@ bool validate_user_creds(enum E_user_role user_role, S_user_creds creds) {
   // eof reached, not validated
   fclose(data_file);
   notify("CredsValidation", "Validation failed! Usrname or Password invalid");
+  set_logged_in_user(NULL);
   return false;
 }
 

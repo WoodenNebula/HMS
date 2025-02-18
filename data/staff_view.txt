@@ -1,4 +1,4 @@
----- Welcome Name-(Staff) ----
+---- Welcome (Staff) ----
 1. Manage Reservations
 2. Check In/Out guests
 3. View hotel room status

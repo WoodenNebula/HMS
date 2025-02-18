@@ -1,4 +1,4 @@
----- Welcome Name-(Customer) ----
+---- Welcome (Customer) ----
 1. Make Reservations
 2. Cancel Reservations
 3. View hotel room status

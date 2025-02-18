@@ -1,4 +1,4 @@
----- Welcome Name-(Admin) ----
+---- Welcome (Admin) ----
 1. Register new user
 2. Manage existing users
 3. Register new room

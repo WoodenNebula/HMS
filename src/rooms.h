@@ -34,8 +34,10 @@ void print_all_room_data(bool hasBookingViewAuthority);
 
 S_room_data prompt_room_details();
 S_room_data get_room_data(int room_num);
+S_room_data find_room_booked_by(const char *usr_name);
 
 bool reserve_room(int room_num, const char *reserver_usrname);
+bool unreserve_room(int room_num, const char *unreserver_usrname);
 
 bool modify_room_data(const S_room_data *new_data, int room_num);
 void register_room_data(const S_room_data *data);
