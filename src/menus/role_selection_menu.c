@@ -23,7 +23,7 @@ void role_selection_action_handler(int user_role) {
     break;
   default:
     warn("UserSelection", "Bad User Type");
-    abort();
+    exit(EXIT_SUCCESS);
     break;
   }
 }

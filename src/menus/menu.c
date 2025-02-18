@@ -92,3 +92,10 @@ void display_file_content(const char *path) {
     printf("%s", line);
   };
 }
+
+void pause() {
+  puts("\nPress any key to continue");
+  // one getchar consumes the previous \n char and another normal input
+  getchar();
+  getchar();
+}

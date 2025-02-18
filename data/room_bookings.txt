@@ -10,3 +10,6 @@ Room: 9 unbooked by cat
 Room: 9 booked by cat
 Room: 9 unbooked by cat
 Room: 1 booked by cat
+Room: 9 booked by admin
+Room: 1 unbooked by cat
+Room: 9 unbooked by admin

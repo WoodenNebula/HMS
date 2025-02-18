@@ -19,10 +19,7 @@ void handle_book() {
     notify("CustomerBooking", "Booking failed");
   }
 
-  puts("\nPress any key to continue");
-  // one getchar consumes the previous \n char and another normal input
-  getchar();
-  getchar();
+  pause();
 }
 
 void handle_unbook() {
@@ -42,10 +39,7 @@ void handle_unbook() {
     notify("CustomerBooking", "Unbooking failed");
   }
 
-  puts("\nPress any key to continue");
-  // one getchar consumes the previous \n char and another normal input
-  getchar();
-  getchar();
+  pause();
 }
 
 void handle_view_room() {
@@ -59,10 +53,7 @@ void handle_view_room() {
   } else {
     print_room_data(&room, true);
   }
-  puts("\nPress any key to continue");
-  // one getchar consumes the previous \n char and another normal input
-  getchar();
-  getchar();
+  pause();
 }
 enum E_customer_choices { book = 1, unbook, view_rooms };
 

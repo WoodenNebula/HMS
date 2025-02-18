@@ -32,3 +32,4 @@ Menu *get_menu(enum E_menu_type type);
 bool add_menu_entry(Menu *menu);
 
 int input_action();
+void pause();

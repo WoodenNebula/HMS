@@ -1,8 +1,11 @@
 ---- Welcome (Staff) ----
-1. Manage Reservations
-2. Check In/Out guests
-3. View hotel room status
+1. Make reservation
+2. Delete reservation
+3. Check In guests
+4. Check Out guests
+5. View hotel room status
+6. View booking history
 --------
-4. Logout
+7. Logout
 
-Select next action (1-4): 
+Select next action (1-7): 

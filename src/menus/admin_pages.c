@@ -47,10 +47,7 @@ void handle_manage_user() {
   } else {
     notify("UserDataModification", "Failed");
   }
-  puts("\nPress any key to continue");
-  // one getchar consumes the previous \n char and another normal input
-  getchar();
-  getchar();
+  pause();
 }
 
 void handle_register_room() {
@@ -89,10 +86,7 @@ void handle_manage_room() {
   } else {
     notify("RoomDataModification", "Failed");
   }
-  puts("\nPress any key to continue");
-  // one getchar consumes the previous \n char and another normal input
-  getchar();
-  getchar();
+  pause();
 }
 
 void admin_view_display() { display_file_content(FILE_ADMIN_VIEW); }
