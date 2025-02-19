@@ -12,7 +12,11 @@ void get_logged_in_user(char *o_user_name) {
 }
 
 void set_logged_in_user(const char *user_name) {
-  strncpy(g_logged_in_user, user_name, LINE_MAX);
+  if(user_name == NULL) {
+    strncpy(g_logged_in_user, "\0", LINE_MAX);
+} else {
+    strncpy(g_logged_in_user, user_name, LINE_MAX);
+  }
 }
 
 void get_user_role_name(char *o_buff, enum E_user_role role) {
