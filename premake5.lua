@@ -11,6 +11,15 @@ files({
 	"./src/**.c",
 })
 
+filter "system:windows"
+    defines { "WINDOWS" }
+filter {}
+
+filter "system:linux"
+    defines { "LINUX" }
+filter {}
+
+
 filter("configurations:Debug")
 defines({ "DEBUG" })
 symbols("On")

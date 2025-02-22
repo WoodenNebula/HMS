@@ -101,7 +101,7 @@ void login_display() {
     break;
   }
 
-  system("clear");
+  clear_menu();
   printf("---- Login (%s) ----\n", name);
   bool validation_success = prompt_credentials();
 

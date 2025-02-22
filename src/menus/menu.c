@@ -8,7 +8,7 @@ Menu *g_current_menu;
 Menu g_menu_list[10] = {0};
 
 void refresh_menu() {
-  system("clear");
+  clear_menu();
   get_current_menu()->display_handler();
   int sel = input_action();
   get_current_menu()->action_handler(sel);
@@ -24,7 +24,16 @@ void change_current_menu(enum E_menu_type new_menu_type) {
   refresh_menu();
 }
 
-void clear_menu() { system("clear"); }
+void clear_menu() {
+    char* clear = "\0";
+#ifdef LINUX
+     clear = "clear\0";
+#endif
+#ifdef WINDOWS
+     clear = "cls\0";
+#endif
+    system(clear);
+}
 
 Menu *get_current_menu() {
   if (g_current_menu == NULL || g_current_menu->display_handler == NULL) {
